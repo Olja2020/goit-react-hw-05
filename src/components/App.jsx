@@ -3,15 +3,15 @@
 
 
 
-import MovieDetailPage from "../pages/movieDetailPage/MovieDetailPage";
+//import MovieDetailPage from "../pages/movieDetailPage/MovieDetailPage";
 import MoviesPage from "../pages/moviesPage/MoviesPage";
 //import { BiMoviePlay } from "react-icons/bi";
 import { Route, Routes } from 'react-router-dom';
-import Navigation from '../Navigation/Navigation';
+//import Navigation from '../Navigation/Navigation';
 import HomePage from '../pages/homePage.';
 import NotFoundPage from '../pages/notFoundPage';
-import MovieCast from '../components/movieCast/MovieCast';
-import MovieReviews  from '../components/movieReviews/MovieReviews';
+//import MovieCast from '../components/movieCast/MovieCast';
+//import MovieReviews  from '../components/movieReviews/MovieReviews';
 //import css from './App.module.css';
 export default function App ()  {
   return (
@@ -19,10 +19,10 @@ export default function App ()  {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={< MoviesPage/>} />
-        <Route path="/movies/:movieId" element={<MovieDetailPage />} />
+        {/* <Route path="/movies/:movieId" element={<MovieDetailPage />} />
           <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />
-        </Route> 
+        </Route>  */}
         <Route path="*" element={< NotFoundPage/>} />
       </Routes>
     </div>
