@@ -1,73 +1,30 @@
-import { useEffect, useState } from "react";
-import LoadMoreBtn from "./loadMoreBtn/LoadMoreBtn";
-import Loader from "./loader/Loader";
-import ImageGallery from "./imageGallery/ImageGallery";
-import SearchBar from "./searchBar/SearchBar";
-import ErrorMessage from "./errorMassage/ErrorMessage";
-import ImageModal from "./imageModal/ImageModal";
-import React from "react";
-import { getImages } from "../../src/Api";
+//import { useEffect, useState } from "react";
+//import React from "react";
 
-export default function App() {
-  const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [showBtn, setShowBtn] = useState(false);
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  useEffect(() => {
-    if (searchQuery === "") {
-      return;
-    }
-    async function fetchImages() {
-      try {
-        setIsLoading(true);
-        setIsError(false);
-        const data = await getImages(searchQuery, page);
-        setImages((prevState) => [...prevState, ...data.results]);
-        setShowBtn(data.total_pages && data.total_pages !== page);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchImages();
-  }, [page, searchQuery]);
 
-  const handleSearch = async (topic) => {
-    setSearchQuery(topic);
-    setPage(1);
-    setImages([]);
-  };
-  const handleLoadMore = async () => {
-    setPage(page + 1);
-  };
 
-  function openModal(image) {
-    setIsOpen(true);
-    setSelectedImage(image);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+import MovieDetailPage from "../pages/movieDetailPage/MovieDetailPage";
+import MoviesPage from "../pages/moviesPage/MoviesPage";
+//import { BiMoviePlay } from "react-icons/bi";
+import { Route, Routes } from 'react-router-dom';
+import Navigation from '../Navigation/Navigation';
+import HomePage from '../pages/homePage.';
+import NotFoundPage from '../pages/notFoundPage';
+import MovieCast from '../components/movieCast/MovieCast';
+import MovieReviews  from '../components/movieReviews/MovieReviews';
+//import css from './App.module.css';
+export default function App ()  {
   return (
     <div>
-      <SearchBar images={images} onSearch={handleSearch} />
-      <ImageGallery items={images} openModal={openModal} />
-      {isLoading && <Loader />}
-      {showBtn && !isLoading && <LoadMoreBtn onClick={handleLoadMore} />}
-      {isError && <ErrorMessage />}
-      {modalIsOpen && (
-        <ImageModal
-          image={selectedImage}
-          closeModal={closeModal}
-          data={selectedImage}
-        />
-      )}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/movies" element={< MoviesPage/>} />
+        <Route path="/movies/:movieId" element={<MovieDetailPage />} />
+          <Route path="cast" element={<MovieCast />} />
+          <Route path="reviews" element={<MovieReviews />} />
+        </Route> 
+        <Route path="*" element={< NotFoundPage/>} />
+      </Routes>
     </div>
   );
 }
