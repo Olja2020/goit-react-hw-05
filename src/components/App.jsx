@@ -10,6 +10,7 @@ import NotFoundPage from '../pages/notFoundPage/NotFoundPage';
 import MovieCast from '../components/movieCast/MovieCast';
 import MovieReviews  from '../components/movieReviews/MovieReviews';
 import css from './App.module.css';
+
 export default function App ()  {
   return (
     <div className={css.container}>
