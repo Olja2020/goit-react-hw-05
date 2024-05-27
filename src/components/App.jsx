@@ -1,7 +1,7 @@
 import {lazy, Suspense} from 'react'
 import { Route, Routes } from 'react-router-dom';
 import Loader from '../components/loader/Loader.jsx';
-const MovieDetailPage = lazy(() => import('../pages/movieDetailPage/MovieDetailPage.jsx'));
+const MovieDetailsPage = lazy(() => import('../pages/movieDetailsPage/MovieDetailsPage.jsx'));
 const MoviesPage = lazy(() => import('../pages/moviesPage/MoviesPage.jsx'));
 import Navigation from '../components/navigation/Navigation.jsx'
 const HomePage = lazy(() => import('../pages/homePage/HomePage.jsx'));
@@ -20,7 +20,7 @@ export default function App ()  {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={< MoviesPage/>} />
-        <Route path="/movies/:movieId" element={<MovieDetailPage />} >
+        <Route path="/movies/:movieId" element={<MovieDetailsPage />} >
           <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />
         </Route> 

@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from 'react'
 import Loader from '../../components/loader/Loader'
 import toast from 'react-hot-toast'
 import { IoArrowBackCircleOutline } from "react-icons/io5";
-import css from './MovieDetailPage.module.css'
+import css from './MovieDetailsPage.module.css'
 
 const notify = () => toast.error('Error')
     
