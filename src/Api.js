@@ -8,7 +8,6 @@ const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YjFmMTdlNjI0OGZhNjNkODEzN2MxZjIz
       Authorization: `Bearer ${token}`,
     },
   };
-
 export const fetchPopularMovies = async () => {
   const response = await axios.get(`trending/movie/day?api_key=${KEY}`, options);
   return response.data;
